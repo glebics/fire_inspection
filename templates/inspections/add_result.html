@@ -1,0 +1,39 @@
+<!-- templates/inspections/add_result.html -->
+{% extends 'inspections/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Добавление результата проверки{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Добавление результата проверки</h2>
+<form method="POST" class="needs-validation" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mb-3">
+        {{ form.object.label_tag }}
+        {{ form.object|add_class:"form-select" }}
+        {{ form.object.errors }}
+    </div>
+    <div class="mb-3">
+        {{ form.inspector.label_tag }}
+        {{ form.inspector|add_class:"form-select" }}
+        {{ form.inspector.errors }}
+    </div>
+    <div class="mb-3">
+        {{ form.date.label_tag }}
+        {{ form.date|add_class:"form-control" }}
+        {{ form.date.errors }}
+    </div>
+    <div class="mb-3">
+        {{ form.findings.label_tag }}
+        {{ form.findings|add_class:"form-control" }}
+        {{ form.findings.errors }}
+    </div>
+    <div class="mb-3">
+        {{ form.recommendations.label_tag }}
+        {{ form.recommendations|add_class:"form-control" }}
+        {{ form.recommendations.errors }}
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}
